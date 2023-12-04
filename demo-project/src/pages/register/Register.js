@@ -1,32 +1,34 @@
-import React from 'react'
+import React from "react";
 
-import './Register.css'
-import { useDispatch } from 'react-redux'
-import { register } from '../../apis/accountApi'
-import { useNavigate } from 'react-router-dom'
+import "./Register.css";
+import { useDispatch } from "react-redux";
+import { register } from "../../apis/accountApi";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleRegister = async () => {
-    try {
-      const data = {
-        username: '',
-        password: ''
-      }
-      await register(data)
-      navigate('/login')
-    } catch (error) {
-      console.log(error)
-    }
-  }
+    const handleRegister = async () => {
+        try {
+            const data = {
+                username: "",
+                password: "",
+            };
+            await register(data);
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-  return (
-    <>
-    <div>Register</div>
-    <button onClick={handleRegister}>Register</button>
-    </>
-  )
-}
+    return (
+        <>
+            <div>Register</div>
+            {/* Username: <input ref={usernameRef} type="text" /> */}
+            {/* Password: <input ref={passwordRef} type="text" /> */}
+            <button onClick={handleRegister}>Register</button>
+        </>
+    );
+};
 
-export default Register
+export default Register;

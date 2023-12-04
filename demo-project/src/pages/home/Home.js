@@ -24,12 +24,12 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getProducts());
-        dispatch(deleteProduct());
+        // dispatch(deleteProduct());
     }, []);
 
     return (
         <div className="Home">
-            <Filter />
+            {/* <Filter /> */}
             <ProductList data={products} />
         </div>
     );

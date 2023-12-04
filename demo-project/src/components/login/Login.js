@@ -1,30 +1,7 @@
-import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
-
-import { loginAsync } from "../../redux-toolkit/slices/accountSlice";
-
+import React from "react";
 import "./Login.css";
 
 const Login = () => {
-    const dispatch = useDispatch();
-
-    const usernameRef = useRef(null);
-    const passwordRef = useRef(null);
-
-    const handleLogin = () => {
-        const payload = {
-            username: usernameRef.current.value,
-            password: passwordRef.current.value,
-        };
-        dispatch(loginAsync(payload));
-    };
-
-    const isAuthenticated = localStorage.getItem("access-token");
-
-    if (isAuthenticated) {
-        return <Navigate to="/" replace />;
-    }
     return (
         <div>
             <div class="container" id="container">
@@ -64,14 +41,10 @@ const Login = () => {
                             </a>
                         </div>
                         <span>or use your account</span>
-                        <input placeholder="username" ref={usernameRef} />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            ref={passwordRef}
-                        />
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Password" />
                         <a href="#">Forgot your password?</a>
-                        <button onClick={handleLogin}>Sign In</button>
+                        <button>Sign In</button>
                     </form>
                 </div>
                 <div class="overlay-container">
@@ -98,12 +71,6 @@ const Login = () => {
             </div>
         </div>
     );
-    // <div className="Login">
-    //     Username: <input ref={usernameRef} type="text" />
-    //     Password: <input ref={passwordRef} type="text" />
-    //     <button onClick={handleLogin}>Login</button>
-    // </div>
-    // );
 };
 
 export default Login;
